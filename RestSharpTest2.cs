@@ -5,41 +5,29 @@ using RestSharp;
 using System;
 using System.Collections.Generic;
 
-namespace RestSharpTest
+namespace RestSharpTestCase
 {
-
     public class Employee
     {
         public int id { get; set; }
         public string name { get; set; }
         public string salary { get; set; }
     }
-
-
     [TestClass]
-    public class RestSharpCase
+    public class RestSharpTest
     {
         RestClient client;
-
         [TestInitialize]
         public void Setup()
         {
             client = new RestClient ("Http://localhost:4000");
-
         }
-
         private IRestResponse getEmployeeList()
         {
             //arrange
             RestRequest request = new RestRequest ("/employees", Method.GET);
-
-            //act
+           //act
             IRestResponse response = client.Execute(request);
             return response;
-
         }
-
-       
-
-
 }
